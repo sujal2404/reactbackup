@@ -1,0 +1,55 @@
+.team {
+  padding: 60px 8%;
+  background-color: white;
+}
+
+.team-heading {
+  text-align: center;
+  max-width: 550px;
+  margin: 0 auto 35px;
+}
+
+.team-heading h2 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  color: #172d40;
+  margin: 12px 0;
+}
+
+.team-heading > p:last-child {
+  color: #666;
+  font-size: 14px;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}
+
+.team-card {
+  background-color: #f7f8fa;
+  text-align: center;
+  overflow: hidden;
+}
+
+.team-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.team-info {
+  padding: 20px;
+}
+
+.team-info h3 {
+  font-size: 17px;
+  color: #172d40;
+  margin-bottom: 8px;
+}
+
+.team-info p {
+  font-size: 13px;
+  color: #777;
+}

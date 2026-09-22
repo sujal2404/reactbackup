@@ -1,0 +1,54 @@
+.property-card {
+  width: 100%;
+  max-width: 350px;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* THIS controls the huge image */
+.property-card-image {
+  display: block;
+  width: 100%;
+  height: 220px;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+/* Content below image */
+.property-card-content {
+  padding: 18px;
+  box-sizing: border-box;
+}
+
+.property-card-content h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+}
+
+.property-location {
+  margin: 0 0 12px;
+  color: #666;
+  font-size: 14px;
+}
+
+.property-card-content h4 {
+  margin: 0 0 15px;
+  font-size: 20px;
+  color: #164b7a;
+}
+
+.property-details {
+  display: flex;
+  gap: 15px;
+  font-size: 13px;
+  color: #555;
+}
+
+.property-type {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}

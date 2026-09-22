@@ -1,0 +1,23 @@
+.properties {
+  width: 100%;
+  padding: 60px 8%;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+
+.properties h2 {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.property-grid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+
+  align-items: start;
+}
