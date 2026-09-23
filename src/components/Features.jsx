@@ -1,4 +1,5 @@
 import "./Features.css";
+import { Container, Row, Col } from 'react-bootstrap';
 
 function Features() {
   const features = [
@@ -25,22 +26,30 @@ function Features() {
   ];
 
   return (
-    <section className="features">
-      <div className="features-heading">
-        <p className="section-subtitle">WHY CHOOSE US</p>
-        <h2>Everything You Need to Find Your Home</h2>
-      </div>
-      <div className="features-grid">
-        {features.map((feature, index) => (
-          <div className="feature-card" key={index}>
-            <div className="feature-card-icon">
-              {feature.icon}
-            </div>
-            <h3>{feature.title}</h3>
-            <p>{feature.description}</p>
-          </div>
-        ))}
-      </div>
+    <section className="features-section">
+      <Container>
+        {/* Header Section */}
+        <Row className="justify-content-center mb-4">
+          <Col md={8} className="text-center">
+            <p className="section-subtitle">WHY CHOOSE US</p>
+            <h2 className="section-title">Everything You Need to Find Your Home</h2>
+          </Col>
+        </Row>
+
+        <Row className="g-4">
+          {features.map((feature, index) => (
+            <Col key={index} xs={12} sm={6} md={3}>
+              <div className="feature-card h-100 p-4 text-center">
+                <div className="feature-card-icon">
+                  {feature.icon}
+                </div>
+                <h3>{feature.title}</h3>
+                <p className="mb-0">{feature.description}</p>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </section>
   );
 }

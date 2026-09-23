@@ -1,6 +1,12 @@
 import "./About.css";
 
 function About() {
+  const sectionsubtitle = {
+    color: ' #b18a43',
+    fontSize: '12px',
+    letterSpacing: '1.5px',
+    fontWeight: 'bold',
+  }
   return (
     <section className="about">
 
@@ -17,9 +23,13 @@ function About() {
 
       </div>
 
-      <div className="about-content">
+      <div style={{ flex: 1 }}>
 
-        <p className="section-subtitle">
+        {/* <p className="section-subtitle">
+          ABOUT US
+        </p> */}
+
+        <p style={sectionsubtitle}>
           ABOUT US
         </p>
 

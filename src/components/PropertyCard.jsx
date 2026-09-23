@@ -1,36 +1,48 @@
+import React from "react";
+import { Card, Badge } from "react-bootstrap";
 import "./PropertyCard.css";
 
 function PropertyCard({ property }) {
   return (
-    <div className="property-card">
-      <img
-        className="property-card-image"
+    <Card className="property-card h-100 border-0 shadow-sm">
+      {/* Top Image */}
+      <Card.Img
+        variant="top"
         src={property.image}
         alt={property.title}
+        className="property-card-image"
       />
 
-      <div className="property-card-content">
-        <h3>{property.title}</h3>
+      <Card.Body className="d-flex flex-column p-3">
+        <Card.Title as="h3" className="fs-5 fw-bold mb-1">
+          {property.title}
+        </Card.Title>
 
-        <p className="property-location">
-          {property.location}
-        </p>
+        {/* Location */}
+        <Card.Text className="text-muted small mb-2">
+          📍 {property.location}
+        </Card.Text>
 
-        <h4>
-          ₹{property.price.toLocaleString("en-IN")}
+        {/* Price */}
+        <h4 className="property-price mb-3">
+          ₹{property.price ? property.price.toLocaleString("en-IN") : "N/A"}
         </h4>
 
-        <div className="property-details">
-          <span>{property.bedrooms} Beds</span>
-          <span>{property.bathrooms} Baths</span>
-          <span>{property.area} sq.ft</span>
+        {/* Property Specs (Beds, Baths, Sqft) */}
+        <div className="d-flex justify-content-between text-secondary small border-top pt-2 mt-auto">
+          <span>🛏️ {property.bedrooms} Beds</span>
+          <span>🛁 {property.bathrooms} Baths</span>
+          <span>📐 {property.area} sq.ft</span>
         </div>
 
-        <p className="property-type">
-          {property.propertyType}
-        </p>
-      </div>
-    </div>
+        {/* Property Type Badge */}
+        <div className="mt-2">
+          <Badge bg="light" text="dark" className="border">
+            {property.propertyType}
+          </Badge>
+        </div>
+      </Card.Body>
+    </Card>
   );
 }
 

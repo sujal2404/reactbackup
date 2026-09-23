@@ -16,7 +16,7 @@ function Navbar() {
                 <a href="#">Contact</a>
             </div>
 
-            <button className="sigin-btn">
+            <button className="btn btn-secondary">
                 Sign In
             </button>
         </nav>

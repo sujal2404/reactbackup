@@ -9,7 +9,16 @@ app.use(cors());
 app.use(express.json());
 
 const propertyRoutes = require("./routes/propertyRoutes");
+const testimonialRoutes = require("./routes/testimonialRoutes");
+const teamRoutes = require("./routes/teamRoutes");
+const heroRoutes = require("./routes/heroRoutes");
+
+
  app.use("/api/properties", propertyRoutes);
+app.use("/api/testimonials", testimonialRoutes);
+app.use("/api/team", teamRoutes);
+app.use("/api/hero", heroRoutes); // Mount hero route
+
 
 app.get("/", (req, res) => {
   res.send("Havyn Backend is Running!");

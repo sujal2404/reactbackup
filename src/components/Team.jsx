@@ -1,65 +1,88 @@
-import "./Team.css";
+import { useState, useEffect } from "react";
+import { Card, Row, Col, Container, Spinner } from "react-bootstrap";
 
 function Team() {
-  const team = [
-    {
-      name: "John Anderson",
-      role: "Senior Property Consultant",
-      image:
-        "https://images.unsplash.com/photo-1560250097-0b93528c311a"
-    },
-    {
-      name: "Sarah Williams",
-      role: "Real Estate Advisor",
-      image:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2"
-    },
-    {
-      name: "Michael Brown",
-      role: "Property Specialist",
-      image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e"
-    }
-  ];
+  const [team, setTeam] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/team");
+        if (!response.ok) {
+          throw new Error("Failed to fetch team members");
+        }
+        const data = await response.json();
+        setTeam(data);
+      } catch (err) {
+        console.error("Error:", err);
+        setError("Could not load team members.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTeam();
+  }, []);
+
+  if (loading) {
+    return (
+      <Container className="text-center my-5 py-5">
+        <Spinner animation="border" variant="primary" />
+        <p className="mt-2 text-muted">Loading team members...</p>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container className="text-center my-5 py-5 text-danger">
+        <p>{error}</p>
+      </Container>
+    );
+  }
 
   return (
-    <section className="team">
-
-      <div className="team-heading">
-        <p className="section-subtitle">OUR TEAM</p>
-
+    <Container className="mt-5 pt-3">
+      <div className="team-heading text-center mb-4">
+        <p className="text-uppercase text-primary fw-bold mb-1">OUR TEAM</p>
         <h2>Meet Our Expert Team</h2>
-
-        <p>
-          Our experienced professionals are here to help
-          you find the perfect property.
+        <p className="text-muted">
+          Our experienced professionals are here to help you find the perfect property.
         </p>
       </div>
 
-      <div className="team-grid">
-
-        {team.map((member, index) => (
-          <div className="team-card" key={index}>
-
-            <img
-              src={member.image}
-              alt={member.name}
-            />
-
-            <div className="team-info">
-
-              <h3>{member.name}</h3>
-
-              <p>{member.role}</p>
-
-            </div>
-
-          </div>
-        ))}
-
-      </div>
-
-    </section>
+      <Row xs={1} md={3} className="g-4">
+        {team.length > 0 ? (
+          team.map((member) => (
+            <Col key={member._id}>
+              <Card className="h-100 border-0 shadow-sm align-items-center pt-3">
+                <Card.Img
+                  variant="top"
+                  src={member.image}
+                  alt={member.name}
+                  style={{
+                    width: "220px",
+                    height: "220px",
+                    objectFit: "contain",
+                    backgroundColor: "ThreeDFace"
+                  }}
+                />
+                <Card.Body className="text-center">
+                  <Card.Title className="h5 mb-1">{member.name}</Card.Title>
+                  <Card.Text className="text-muted small">{member.role}</Card.Text>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))
+        ) : (
+          <Col xs={12} className="text-center">
+            <p className="text-muted">No team members found.</p>
+          </Col>
+        )}
+      </Row>
+    </Container>
   );
 }
 
