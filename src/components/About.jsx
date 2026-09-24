@@ -1,6 +1,6 @@
 import "./About.css";
 
-function About() {
+function About(props) {
   const sectionsubtitle = {
     color: ' #b18a43',
     fontSize: '12px',
@@ -30,7 +30,7 @@ function About() {
         </p> */}
 
         <p style={sectionsubtitle}>
-          ABOUT US
+          {props.title}
         </p>
 
         <h2>
